@@ -1,0 +1,44 @@
+<template>
+
+    <div class="iframe-wrapper">
+      <iframe
+        src="https://app.wakeque.com/lkpg-wake-park"
+        width="100%"
+        height="800"
+        frameborder="0"
+        style="border: none;"
+        title="Boka LKPG Wake Park"
+      ></iframe>
+</div>
+</template>
+
+<style scoped>
+.booking-container {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  text-align: center;
+  background-color: white;
+  border-radius: 4px;
+}
+
+.booking-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  color: #111827;
+}
+
+.booking-description {
+  font-size: 1.125rem;
+  margin-bottom: 2rem;
+  color: #4b5563;
+}
+
+.iframe-wrapper {
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+</style>
