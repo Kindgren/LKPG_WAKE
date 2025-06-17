@@ -16,9 +16,9 @@ const modelValue = computed({
 
 const menuItems = [
   { label: 'Start', icon: 'pi pi-home', command: () => (window.location.href = '/home') },
-  { label: 'Boka', icon: 'pi pi-calendar',  command: () => (window.location.href = '/booking') },
-  { label: 'Om oss', icon: 'pi pi-info-circle' },
-  { label: 'Kontakt', icon: 'pi pi-envelope' },
+  { label: 'Shop', icon: 'pi pi-calendar',  command: () => (window.location.href = '/booking') },
+  { label: 'Om oss', icon: 'pi pi-info-circle', command: () => (window.location.href ='/about') },
+  { label: 'Kontakt', icon: 'pi pi-envelope', command: () => (window.location.href = 'contact') },
 ]
 </script>
 
@@ -26,13 +26,12 @@ const menuItems = [
 <Drawer v-model:visible="modelValue" position="left" modal style="width: 80vw;">
   <template #container>
     <div class="drawer-header">
-      <div class="drawer-title"> <h2>LKPG WAKE</h2>
+      <div class="drawer-title"> <h2>LKPG WAKEPARK</h2>
       <Button icon="pi pi-times" text @click="modelValue = false" class="close-button" />
       </div>
     </div>
-
     <div class="drawer-content">
-      <Menu style="margin:2%" :model="menuItems" />
+      <Menu style="font-size: large; padding:10pxß" :model="menuItems" />
     </div>
   </template>
 </Drawer>
@@ -42,10 +41,20 @@ const menuItems = [
 <style scoped>
 .drawer-title {
   margin: 0;
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: bold;
   display: flex;
   justify-content: space-between;
   padding: 15px;
+  color: var(--p-primary-color);
 }
+
+.drawer-content {
+  border-radius: 4px;
+  margin:6px;
+
+
+}
+
+
 </style>

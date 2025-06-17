@@ -1,23 +1,44 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import AppHeader from './components/Header.vue'
 import AppDrawer from './components/SideMenu.vue'
 
 const drawerVisible = ref(false)
+const isMobile = ref(true)
+
+onMounted(() => {
+  // isMobile.value = /Android|webOS|iPhone|iPad|iPod|BlackBerry|Windows Phone/i.test(navigator.userAgent)
+  isMobile.value = true;
+})
+
 </script>
 
 <template>
-  <AppHeader @toggle-drawer="drawerVisible = true" />
-  <AppDrawer v-model:visible="drawerVisible" />
+  <div v-if="!isMobile" class="under-construction">
+    <h1>🚧 Site Under Construction</h1>
+    <p>This site is only available on mobile devices at the moment.</p>
+  </div>
 
-  <!-- Dynamic routing -->
-  <main class="main-content">
-    <router-view />
-  </main>
+  <div v-else>
+    <AppHeader @toggle-drawer="drawerVisible = true" />
+    <AppDrawer v-model:visible="drawerVisible" />
+    <main class="main-content">
+      <router-view />
+    </main>
+  </div>
+    <footer class="site-footer">
+  <p>© 2025 Gustav Kindgren.</p>
+</footer>
 </template>
 
-<style scoped>
+
+<style>
 .main-content {
   padding-top: 20px;
 }
+
+:root {
+  color-scheme: light !important;
+}
+
 </style>

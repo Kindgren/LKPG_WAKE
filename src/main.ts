@@ -1,7 +1,7 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 import PrimeVue from 'primevue/config';
-import Aura from '@primeuix/themes/aura'; // ✅ new theme package
+import Aura from '@primeuix/themes/Aura/'; // ✅ new theme package
 import { router } from './router';
 import 'primeicons/primeicons.css'
 

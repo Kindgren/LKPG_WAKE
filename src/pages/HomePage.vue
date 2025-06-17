@@ -15,16 +15,25 @@ import Card from 'primevue/card'
     <section class="dropin-card">
       <Card>
         <template #title>
-          <h3>Drop-in Tider</h3>
+          <h3>Drop-in Öppettider</h3>
         </template>
         <template #content>
           <ul>
-            <li style = "color:green">Torsdagar: 17:00 – 20:00</li>
-            <li style = "color:green">Söndagar: 12:00 – 18:00</li>
+            <li>Torsdagar: 17:00 – 20:00</li>
+            <li>Söndagar: 12:00 – 18:00</li>
           </ul>
         </template>
       </Card>
     </section>
+
+      <a
+    href="https://web.facebook.com/groups/110119166277276"
+    target="_blank"
+    rel="noopener"
+    class="facebook-button"
+  >
+    🚨 Ibland har vi spontanöppet   
+  </a>
 
     <section class="map-section">
       <h3 class="map-title">Hitta hit</h3>
@@ -49,9 +58,9 @@ import Card from 'primevue/card'
 .club-container {
   max-width: 960px;
   margin: 0 auto;
-  padding: 1rem 1rem;
-  background-color: white;
-  border-radius: px;
+  padding: 0rem 1rem;
+  border-radius: 0px;
+  
 }
 
 .intro {
@@ -68,12 +77,12 @@ import Card from 'primevue/card'
 
 .intro-text {
   font-size: 1.125rem;
-  color: #374151;
   margin-bottom: 1rem;
 }
 
 .dropin-card {
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
+  border-radius: 8px;
 }
 
 .dropin-card h3 {
@@ -81,6 +90,8 @@ import Card from 'primevue/card'
   font-weight: 600;
   text-align: center;
   margin-bottom: 0.5rem;
+  margin-top: 0px;
+
 }
 
 .dropin-card ul {
@@ -88,7 +99,7 @@ import Card from 'primevue/card'
   padding: 0;
   text-align: center;
   font-size: 1.125rem;
-  color: #333;
+
 }
 
 .map-section {
@@ -107,7 +118,14 @@ import Card from 'primevue/card'
   width: 100%;
   height: 350px;
   border-radius: 10px;
+ 
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.facebook-button {
+  background-color: var(--p-card-background);
+  width: 100%;
+  
 }
 </style>

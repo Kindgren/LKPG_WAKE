@@ -9,8 +9,32 @@
         style="border: none;"
         title="Boka LKPG Wake Park"
       ></iframe>
+      
 </div>
+
+
+
+
 </template>
+
+<style>
+.facebook-button {
+  display: inline-block;
+  background-color: #1877f2;
+  color: white;
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  margin: 1rem auto;
+  text-align: center;
+  max-width: 100%;
+}
+.facebook-button:hover {
+  background-color: #155db2;
+}
+</style>
+
 
 <style scoped>
 .booking-container {
