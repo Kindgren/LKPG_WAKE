@@ -2,9 +2,11 @@
 import { ref, onMounted } from 'vue'
 import AppHeader from './components/Header.vue'
 import AppDrawer from './components/SideMenu.vue'
+import { useRoute } from 'vue-router'
 
 const drawerVisible = ref(false)
 const isMobile = ref(true)
+const route = useRoute()
 
 onMounted(() => {
   isMobile.value = /Android|webOS|iPhone|iPad|iPod|BlackBerry|Windows Phone/i.test(navigator.userAgent)
@@ -26,15 +28,16 @@ onMounted(() => {
       <router-view />
     </main>
   </div>
-    <footer class="site-footer">
-  <p>© 2025 Gustav Kindgren.</p>
+    <footer v-if="route.path !== '/booking'" class="site-footer">
+  <p >© 2025 Gustav Kindgren.</p>
 </footer>
 </template>
 
 
 <style>
 .main-content {
-  padding-top: 20px;
+  padding-top: 10px;
+  
 }
 
 :root {

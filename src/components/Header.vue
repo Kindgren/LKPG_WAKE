@@ -32,9 +32,9 @@ const emit = defineEmits(['toggle-drawer'])
 }
 
 .logo {
-  height: 110px; /* or whatever fits your design */
+  height: 100px; /* or whatever fits your design */
   right: 10%;
-  top:-7px;
+  top: 2px;
   position: absolute;
 
 }

@@ -63,7 +63,7 @@ function submitForm() {
 .contact-page {
   max-width: 600px;
   margin: 0rem auto;
-  padding: 1rem;
+  padding: 0rem, 1rem;
   font-family: sans-serif;
   color: #1a3e2a;
 }

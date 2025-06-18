@@ -1,46 +1,48 @@
+<script setup>
+
+const openInNewWindow = () => {
+  window.open('https://app.wakeque.com/lkpg-wake-park', '_blank', 'noopener')
+}
+</script>
+
 <template>
+
 
     <div class="iframe-wrapper">
       <iframe
         src="https://app.wakeque.com/lkpg-wake-park"
         width="100%"
-        height="800"
+        height="100%"
         frameborder="0"
         style="border: none;"
         title="Boka LKPG Wake Park"
       ></iframe>
-      
-</div>
+    </div>
 
-
-
-
+      <div class = "button-container">
+       <Button
+      label="Öppna shoppen i nytt fönster"
+      icon="pi pi-external-link"
+      class="p-button-success mb-3"
+      @click="openInNewWindow"
+    />
+    </div>
 </template>
 
-<style>
-.facebook-button {
-  display: inline-block;
-  background-color: #1877f2;
-  color: white;
-  padding: 1rem 1.5rem;
-  font-size: 1.1rem;
-  border-radius: 8px;
-  text-decoration: none;
-  margin: 1rem auto;
-  text-align: center;
-  max-width: 100%;
-}
-.facebook-button:hover {
-  background-color: #155db2;
-}
-</style>
+
 
 
 <style scoped>
+
+.button-container {
+  margin: 0 auto;
+  padding: 10px;
+  text-align: center; /* This centers inline/inline-block children */
+}
 .booking-container {
   max-width: 1024px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 0rem 0rem;
   text-align: center;
   background-color: white;
   border-radius: 4px;
@@ -60,9 +62,15 @@
 }
 
 .iframe-wrapper {
+  margin-top: 10px;
   border: 2px solid #e5e7eb;
   border-radius: 12px;
-  overflow: hidden;
+  overflow: hidden; /* hides overflow outside container */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+   height: 77vh; /* 70% of viewport height */
 }
+
+
+
 </style>
