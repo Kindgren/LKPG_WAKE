@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { defineEmits } from 'vue'
 import Toolbar from 'primevue/toolbar'
-import Button from 'primevue/button'
 import Logo from '../assets/circleLogo.png'
 import { useLanguageStore } from '../stores/languageStore'
 
