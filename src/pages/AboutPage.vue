@@ -1,25 +1,45 @@
+<script setup lang="ts">
+import { useLanguageStore } from '../stores/languageStore'
+const languageStore = useLanguageStore()
+
+</script>
+
 <template>
   <section class="about-page">
     <div class="container">
-      <h1 class="title">Om Oss</h1>
+      <h1 class="title">
+        {{ languageStore.language === 'sv' ? 'Om Oss' : 'About Us' }}
+      </h1>
+
       <p class="paragraph">
-        Vi är ett gäng entusiaster som älskar vattensport och som tillsammans driver wakeparken i Linköping. Parken ligger naturskönt vid vattnet och är en mötesplats för både nybörjare och erfarna åkare.
+        {{
+          languageStore.language === 'sv'
+            ? 'Vi är ett gäng entusiaster som älskar vattensport och som tillsammans driver wakeparken i Linköping. Parken ligger naturskönt vid vattnet och är en mötesplats för både nybörjare och erfarna åkare.'
+            : 'We are a group of enthusiasts who love water sports and together run the wake park in Linköping. The park is beautifully located by the water and serves as a meeting place for both beginners and experienced riders.'
+        }}
       </p>
 
       <p class="paragraph">
-        Allt började som ett hobbyprojekt med några entusiaster och en vision om att göra wakeboard mer tillgängligt i regionen. Genom mycket ideellt arbete och stöd från lokala åkare kunde vi bygga upp en kabelpark som idag är en självklar del av sommaren i Linköping.
+        {{
+          languageStore.language === 'sv'
+            ? 'Allt började som ett hobbyprojekt med några entusiaster och en vision om att göra wakeboard mer tillgängligt i regionen. Genom mycket ideellt arbete och stöd från lokala åkare kunde vi bygga upp en kabelpark som idag är en självklar del av sommaren i Linköping.'
+            : 'It all started as a hobby project with a few enthusiasts and a vision to make wakeboarding more accessible in the region. Through a lot of volunteer work and support from local riders, we built a cable park that is now a natural part of summer in Linköping.'
+        }}
       </p>
 
       <p class="paragraph">
-        Hos oss handlar det inte bara om att åka – det handlar om gemenskap, spontanitet och att ha kul tillsammans. Vi hoppas du vill vara en del av det!
+        {{
+          languageStore.language === 'sv'
+            ? 'Hos oss handlar det inte bara om att åka – det handlar om gemenskap, spontanitet och att ha kul tillsammans. Vi hoppas du vill vara en del av det!'
+            : 'For us, it’s not just about riding – it’s about community, spontaneity, and having fun together. We hope you want to be a part of it!'
+        }}
       </p>
     </div>
   </section>
 </template>
 
-<script setup lang="ts">
-// No logic needed
-</script>
+
+
 
 <style scoped>
 .about-page {

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import Card from 'primevue/card'
+import { useLanguageStore } from '../stores/languageStore'
 
+const languageStore = useLanguageStore()
 const openFacebookGroup = () => {
   window.open('https://web.facebook.com/groups/110119166277276', '_blank', 'noopener')
 }
@@ -13,20 +15,23 @@ const openFacebookGroup = () => {
 <section class="dropin-card">
   <Card>
     <template #title>
-      <h3>Drop-in Öppettider</h3>
+      <h3 v-if="languageStore.language === 'sv' ">Drop-in Öppettider</h3>
+      <h3 v-else> Open for Drop in</h3>
     </template>
     <template #content>
-      <ul>
-        <li>Torsdagar: 17:00 – 20:00</li>
-        <li>Söndagar: 12:00 – 18:00</li>
-        <Button
-  label="Spontanöppet? Klicka här"
-  icon="pi pi-external-link"
-  style="margin-top: 10px;"
-  @click="openFacebookGroup"
-/>
-      </ul>
-  
+          <ul>
+            <li v-if="languageStore.language === 'sv'">Torsdagar: 17:00 – 20:00</li>
+            <li v-else>Thursdays: 5 PM – 8 PM</li>
+
+            <li v-if="languageStore.language === 'sv'">Söndagar: 12:00 – 18:00</li>
+            <li v-else>Sundays: 12 PM – 6 PM</li>
+                   <Button
+            :label="languageStore.language === 'sv' ? 'Spontanöppet? Klicka här' : 'Unofficial sessions? Click here'"
+            icon="pi pi-external-link"
+            style="margin-top: 10px;"
+            @click="openFacebookGroup"
+          />
+          </ul>
 
     </template>
   </Card>

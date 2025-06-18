@@ -28,7 +28,7 @@ onMounted(() => {
       <router-view />
     </main>
   </div>
-    <footer v-if="route.path !== '/booking'" class="site-footer">
+    <footer v-if="route.path !== '/booking' && route.path!=='/queue'" class="site-footer">
   <p >© 2025 Gustav Kindgren.</p>
 </footer>
 </template>

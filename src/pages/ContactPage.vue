@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useLanguageStore } from '../stores/languageStore'
+
+const languageStore = useLanguageStore()
 
 const name = ref('')
 const email = ref('')
@@ -7,57 +10,82 @@ const message = ref('')
 const submitted = ref(false)
 
 function submitForm() {
-  const subject = encodeURIComponent('Kontakt från hemsidan')
+  const subject = encodeURIComponent(
+    languageStore.language === 'sv' ? 'Kontakt från hemsidan' : 'Contact from website'
+  )
   const body = encodeURIComponent(
-    `Namn: ${name.value}\nE-post: ${email.value}\n\n${message.value}`
+    `${languageStore.language === 'sv' ? 'Namn' : 'Name'}: ${name.value}\n` +
+    `${languageStore.language === 'sv' ? 'E-post' : 'Email'}: ${email.value}\n\n${message.value}`
   )
   const mailtoLink = `mailto:lkpg.kabelsport@gmail.com?subject=${subject}&body=${body}`
 
   window.location.href = mailtoLink
 }
-
 </script>
 
 <template>
   <section class="contact-page">
-    <h1>Kontakta oss</h1>
+    <h1>{{ languageStore.language === 'sv' ? 'Kontakta oss' : 'Contact Us' }}</h1>
 
-    <p>Har du frågor, funderingar eller vill du bara säga hej? Fyll i formuläret nedan eller kontakta oss via våra sociala medier.</p>
+    <p>
+      {{
+        languageStore.language === 'sv'
+          ? 'Har du frågor, funderingar eller vill du bara säga hej? Fyll i formuläret nedan eller kontakta oss via våra sociala medier.'
+          : 'Have questions, thoughts, or just want to say hi? Fill out the form below or reach out through our social media channels.'
+      }}
+    </p>
 
     <form @submit.prevent="submitForm" v-if="!submitted" class="contact-form">
       <label>
-        Namn
+        {{ languageStore.language === 'sv' ? 'Namn' : 'Name' }}
         <input v-model="name" type="text" required />
       </label>
 
       <label>
-        E-post
+        {{ languageStore.language === 'sv' ? 'E-post' : 'Email' }}
         <input v-model="email" type="email" required />
       </label>
 
       <label>
-        Meddelande
+        {{ languageStore.language === 'sv' ? 'Meddelande' : 'Message' }}
         <textarea v-model="message" required></textarea>
       </label>
 
-      <button type="submit">Skicka</button>
+      <button type="submit">
+        {{ languageStore.language === 'sv' ? 'Skicka' : 'Send' }}
+      </button>
     </form>
 
     <div v-else class="confirmation">
-      <h2>Tack för ditt meddelande!</h2>
-      <p>Vi hör av oss så snart vi kan.</p>
+      <h2>
+        {{ languageStore.language === 'sv' ? 'Tack för ditt meddelande!' : 'Thank you for your message!' }}
+      </h2>
+      <p>
+        {{ languageStore.language === 'sv' ? 'Vi hör av oss så snart vi kan.' : 'We’ll get back to you as soon as we can.' }}
+      </p>
     </div>
 
     <div class="contact-info">
-      <h2>Övriga kontaktvägar</h2>
+      <h2>
+        {{ languageStore.language === 'sv' ? 'Övriga kontaktvägar' : 'Other contact options' }}
+      </h2>
       <ul>
-        <li><strong>Email: lkpg.kabelsport@gmail.com</strong> </li>
-        <li><strong>Facebook:</strong> <a href="https://web.facebook.com/lkpgwakepark" target="_blank">Vår Facebook-grupp</a></li>
-        <li><strong>Instagram:</strong> <a href="https://instagram.com/lkpgwakepark" target="_blank">@lkpgwakepark</a></li>
+        <li><strong>Email:</strong> lkpg.kabelsport@gmail.com</li>
+        <li>
+          <strong>Facebook:</strong>
+          <a href="https://web.facebook.com/lkpgwakepark" target="_blank">
+            {{ languageStore.language === 'sv' ? 'Vår Facebook-grupp' : 'Our Facebook Group' }}
+          </a>
+        </li>
+        <li>
+          <strong>Instagram:</strong>
+          <a href="https://instagram.com/lkpgwakepark" target="_blank">@lkpgwakepark</a>
+        </li>
       </ul>
     </div>
   </section>
 </template>
+
 
 <style scoped>
 .contact-page {

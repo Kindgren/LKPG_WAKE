@@ -1,5 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import { useLanguageStore } from '../stores/languageStore' // adjust path to your actual store
+
+
+const languageStore = useLanguageStore()
+
 
 const props = defineProps<{
   visible: boolean
@@ -16,6 +21,36 @@ const navigateTo = (path: string) => {
   window.location.href = path
 }
 
+// Define keys of translations for type safety
+type TranslationKey = 'start' | 'queue' | 'shop' | 'about' | 'contact'
+
+// Translation dictionary with strict typing
+const translations: Record<'sv' | 'en', Record<TranslationKey, string>> = {
+  sv: {
+    start: 'Start',
+    queue: 'Kö',
+    shop: 'Shop',
+    about: 'Om oss',
+    contact: 'Kontakt'
+  },
+  en: {
+    start: 'Home',
+    queue: 'Queue',
+    shop: 'Shop',
+    about: 'About',
+    contact: 'Contact'
+  }
+}
+
+// Computed current language from store with fallback
+const currentLang = computed<'sv' | 'en'>(() => {
+  return languageStore.language === 'sv' ? 'sv' : 'en'
+})
+
+// Translation helper function, typed
+function t(key: TranslationKey): string {
+  return translations[currentLang.value][key]
+}
 
 </script>
 
@@ -31,23 +66,27 @@ const navigateTo = (path: string) => {
         </div>
         <div class="drawer-content">
           <div class="custom-menu">
-            <ul>
-              <li @click="navigateTo('/home')">
-                <i class="pi pi-home"></i>
-                <span>Start</span>
-              </li>
-              <li @click="navigateTo('/booking')">
-                <i class="pi pi-shopping-cart"></i>
-                <span>Shop</span>
-              </li>
-              <li @click="navigateTo('/about')">
-                <i class="pi pi-info-circle"></i>
-                <span>Om oss</span>
-              </li>
-              <li @click="navigateTo('/contact')">
-                <i class="pi pi-envelope"></i>
-                <span>Kontakt</span>
-              </li>
+         <ul>
+            <li @click="navigateTo('/home')">
+              <i class="pi pi-home"></i>
+              <span>{{ t('start') }}</span>
+            </li>
+            <li @click="navigateTo('/queue')">
+              <i class="pi pi-clock"></i>
+              <span>{{ t('queue') }}</span>
+            </li>
+            <li @click="navigateTo('/booking')">
+              <i class="pi pi-shopping-cart"></i>
+              <span>{{ t('shop') }}</span>
+            </li>
+            <li @click="navigateTo('/about')">
+              <i class="pi pi-info-circle"></i>
+              <span>{{ t('about') }}</span>
+            </li>
+            <li @click="navigateTo('/contact')">
+              <i class="pi pi-envelope"></i>
+              <span>{{ t('contact') }}</span>
+            </li>
             </ul>
           </div>
         </div>
