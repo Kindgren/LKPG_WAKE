@@ -22,7 +22,7 @@ function submitForm() {
   <section class="contact-page">
     <h1>Kontakta oss</h1>
 
-    <p>Har du frågor, funderingar eller vill du bara säga hej? Fyll i formuläret nedan eller kontakta oss via sociala medier.</p>
+    <p>Har du frågor, funderingar eller vill du bara säga hej? Fyll i formuläret nedan eller kontakta oss via våra sociala medier.</p>
 
     <form @submit.prevent="submitForm" v-if="!submitted" class="contact-form">
       <label>
