@@ -7,8 +7,8 @@ const drawerVisible = ref(false)
 const isMobile = ref(true)
 
 onMounted(() => {
-  // isMobile.value = /Android|webOS|iPhone|iPad|iPod|BlackBerry|Windows Phone/i.test(navigator.userAgent)
-  isMobile.value = true;
+  isMobile.value = /Android|webOS|iPhone|iPad|iPod|BlackBerry|Windows Phone/i.test(navigator.userAgent)
+  // isMobile.value = true;
 })
 
 </script>
