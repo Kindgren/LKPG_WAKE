@@ -71,10 +71,10 @@ function t(key: TranslationKey): string {
               <i class="pi pi-home"></i>
               <span>{{ t('start') }}</span>
             </li>
-            <li @click="navigateTo('/queue')">
+            <!-- <li @click="navigateTo('/queue')">
               <i class="pi pi-clock"></i>
               <span>{{ t('queue') }}</span>
-            </li>
+            </li> -->
             <li @click="navigateTo('/booking')">
               <i class="pi pi-shopping-cart"></i>
               <span>{{ t('shop') }}</span>
