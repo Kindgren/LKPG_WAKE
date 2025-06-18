@@ -1,5 +1,11 @@
 <script setup lang="ts">
 import Card from 'primevue/card'
+
+const openFacebookGroup = () => {
+  window.open('https://web.facebook.com/groups/110119166277276', '_blank', 'noopener')
+}
+
+
 </script>
 
 <template>
@@ -17,7 +23,7 @@ import Card from 'primevue/card'
   label="Spontanöppet? Klicka här"
   icon="pi pi-external-link"
   style="margin-top: 10px;"
-  @click="() => window.open('https://web.facebook.com/groups/110119166277276', '_blank', 'noopener')"
+  @click="openFacebookGroup"
 />
       </ul>
   
