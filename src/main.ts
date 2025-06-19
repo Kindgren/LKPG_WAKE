@@ -11,10 +11,14 @@ import Card from 'primevue/card'
 import Drawer from 'primevue/drawer'
 import Menu from 'primevue/menu'
 import { createPinia } from 'pinia'
+import piniaPersist from 'pinia-plugin-persistedstate'
 
 
 const pinia = createPinia()
+pinia.use(piniaPersist)
+
 const app = createApp(App);
+
 
 app.use(pinia) 
 app.use(router);

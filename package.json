@@ -12,6 +12,7 @@
     "@primeuix/themes": "^1.1.1",
     "@tailwindcss/vite": "^4.1.10",
     "pinia": "^3.0.3",
+    "pinia-plugin-persistedstate": "^4.3.0",
     "primeicons": "^7.0.0",
     "primevue": "^4.3.5",
     "sass": "^1.89.2",
