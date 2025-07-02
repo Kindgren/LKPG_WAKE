@@ -24,6 +24,10 @@ const languageStore = useLanguageStore();
 
 const emit = defineEmits(["toggle-drawer"]);
 
+const toggleLangSettings = () => {
+  openSettings.value = !openSettings;
+};
+
 const props = defineProps<{
   drawerOpen: boolean;
 }>();
@@ -34,9 +38,8 @@ const currentLangDisplay = computed(() => {
     : { flag: "🇬🇧", label: "EN" };
 });
 
-const open = ref(false);
-
 const setLanguage = (lang: "sv" | "en") => {
+  toggleLangSettings();
   languageStore.setLanguage(lang);
   openSettings.value = false; // Close after selection
 };
@@ -56,7 +59,45 @@ const currentLang = computed<"sv" | "en">(() => {
     :class="['app-header', { collapsed: isHeaderCollapsed && isMobile }]"
   >
     <template #start>
-      <img :src="Logo" alt="Logo" class="logo" @click="navigateTo('/home')" />
+      <div class="header-actions" v-if="isMobile">
+        <div
+          class="settings-wrapper"
+          @mouseenter="openSettings = true"
+          @mouseleave="openSettings = false"
+        >
+          <div class="hover-target" @click="toggleLangSettings">
+            <span>
+              {{ currentLangDisplay.flag }} {{ currentLangDisplay.label }}
+              <i
+                class="pi pi-chevron-down arrow-icon"
+                :class="{ rotated: openSettings }"
+              />
+            </span>
+          </div>
+
+          <div
+            class="settings-menu"
+            v-if="openSettings"
+            @mouseleave="toggleLangSettings"
+          >
+            <button class="lang-button" @click="setLanguage('sv')">
+              🇸🇪 Svenska
+            </button>
+            <button class="lang-button" @click="setLanguage('en')">
+              🇬🇧 English
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <img
+        v-if="!isMobile"
+        :src="Logo"
+        alt="Logo"
+        class="logo"
+        @click="navigateTo('/home')"
+      />
+
       <button
         v-if="isMobile"
         :class="['collapse-btn', { collapsed: isHeaderCollapsed }]"
@@ -70,6 +111,14 @@ const currentLang = computed<"sv" | "en">(() => {
     </template>
 
     <template #center>
+      <img
+        v-if="isMobile"
+        :src="Logo"
+        alt="Logo"
+        class="logo"
+        @click="navigateTo('/home')"
+      />
+
       <nav v-if="!isMobile" class="desktop-menu">
         <ul class="menu-list">
           <!-- Loop through the menu items -->
@@ -84,23 +133,27 @@ const currentLang = computed<"sv" | "en">(() => {
     </template>
 
     <template #end>
-      <div class="header-actions">
+      <div class="header-actions" v-if="!isMobile">
         <div
           class="settings-wrapper"
-          @mouseenter="open = true"
-          @mouseleave="open = false"
+          @mouseenter="openSettings = true"
+          @mouseleave="openSettings = false"
         >
-          <div class="hover-target" @click="open = true">
+          <div class="hover-target" @click="toggleLangSettings">
             <span>
               {{ currentLangDisplay.flag }} {{ currentLangDisplay.label }}
               <i
                 class="pi pi-chevron-down arrow-icon"
-                :class="{ rotated: open }"
+                :class="{ rotated: openSettings }"
               />
             </span>
           </div>
 
-          <div class="settings-menu" v-if="open" @mouseleave="open = false">
+          <div
+            class="settings-menu"
+            v-if="openSettings"
+            @mouseleave="toggleLangSettings"
+          >
             <button class="lang-button" @click="setLanguage('sv')">
               🇸🇪 Svenska
             </button>
@@ -109,19 +162,19 @@ const currentLang = computed<"sv" | "en">(() => {
             </button>
           </div>
         </div>
-
-        <i
-          v-if="isMobile"
-          :class="[
-            'pi',
-            props.drawerOpen ? 'pi-times' : 'pi-bars',
-            'drawer-icon',
-          ]"
-          @click="emit('toggle-drawer')"
-          role="button"
-          tabindex="0"
-        />
       </div>
+      <div class="header-actions" v-else></div>
+      <i
+        v-if="isMobile"
+        :class="[
+          'pi',
+          props.drawerOpen ? 'pi-times' : 'pi-bars',
+          'drawer-icon',
+        ]"
+        @click="emit('toggle-drawer')"
+        role="button"
+        tabindex="0"
+      />
     </template>
   </Toolbar>
 </template>
@@ -130,7 +183,7 @@ const currentLang = computed<"sv" | "en">(() => {
 .app-header {
   height: 160px;
   transition: height 0.3s ease;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .app-header.collapsed {
@@ -144,8 +197,8 @@ const currentLang = computed<"sv" | "en">(() => {
   cursor: pointer;
   color: var(--text-color);
   position: absolute;
-  top: 135px;
-  left: 50%;
+  top: 115px;
+  left: calc(51% + 5px);
 }
 .collapse-btn.collapsed {
   top: 0;
@@ -155,7 +208,7 @@ const currentLang = computed<"sv" | "en">(() => {
   cursor: pointer;
   background-color: var(--p-surface-700);
   border-radius: 4px;
-  padding: 10px;
+  padding: 5px;
   margin-left: 10px;
   margin-right: clamp(2px, 3vw, 300px);
   display: inline-block;
@@ -165,6 +218,8 @@ const currentLang = computed<"sv" | "en">(() => {
   display: inline-flex;
   align-items: center;
   gap: 4px;
+  z-index: 20000;
+  overflow: visible;
 }
 
 .arrow-icon {
@@ -182,17 +237,17 @@ const currentLang = computed<"sv" | "en">(() => {
   padding: 0;
   margin: 0;
   width: 100%;
-  height: 160px;
+  height: 120px;
 }
 
 .logo {
-  height: 120px;
+  height: 100px;
   margin-left: 5vw;
   cursor: pointer;
 }
 
 .drawer-icon {
-  font-size: 2.5rem; /* Make the icon bigger */
+  font-size: 1.5rem; /* Make the icon bigger */
   color: var(--p-primary-color);
   cursor: pointer;
   padding: 1.5rem;
@@ -223,7 +278,7 @@ const currentLang = computed<"sv" | "en">(() => {
   border: none;
   cursor: pointer;
   font-size: 1rem;
-  padding: 0.5rem 1rem;
+  padding: 4px;
   text-align: left;
   color: white;
   width: 100%;

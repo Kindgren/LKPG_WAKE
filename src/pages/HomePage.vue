@@ -18,23 +18,23 @@ const openFacebookGroup = () => {
 const days = computed(() => {
   if (languageStore.language === "sv") {
     return [
-      { name: "Mån", time: "", isOpen: false },
-      { name: "Tis", time: "", isOpen: false },
-      { name: "Ons", time: "", isOpen: false },
-      { name: "Tor", time: "17 – 20", isOpen: true },
-      { name: "Fre", time: "", isOpen: false },
-      { name: "Lör", time: "", isOpen: false },
-      { name: "Sön", time: "12 – 18", isOpen: true },
+      // { name: "Mån", time: "", isOpen: false },
+      // { name: "Tis", time: "", isOpen: false },
+      // { name: "Ons", time: "", isOpen: false },
+      { name: "Torsdagar", time: "17 – 20", isOpen: true },
+      // { name: "Fre", time: "", isOpen: false },
+      // { name: "Lör", time: "", isOpen: false },
+      { name: "Söndagar", time: "12 – 18", isOpen: true },
     ];
   } else {
     return [
-      { name: "Mon", time: "", isOpen: false },
-      { name: "Tue", time: "", isOpen: false },
-      { name: "Wed", time: "", isOpen: false },
-      { name: "Thu", time: "5 PM – 8 PM", isOpen: true },
-      { name: "Fri", time: "", isOpen: false },
-      { name: "Sat", time: "", isOpen: false },
-      { name: "Sun", time: "12 PM – 6 PM", isOpen: true },
+      //  { name: "Mon", time: "", isOpen: false },
+      //{ name: "Tue", time: "", isOpen: false },
+      // { name: "Wed", time: "", isOpen: false },
+      { name: "Thursdays", time: "5 PM – 8 PM", isOpen: true },
+      // { name: "Fri", time: "", isOpen: false },
+      // { name: "Sat", time: "", isOpen: false },
+      { name: "Sundays", time: "12 PM – 6 PM", isOpen: true },
     ];
   }
 });
@@ -215,7 +215,7 @@ const gearItems: { icon: string; key: LangKey }[] = [
 
 .calendar-grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 0.5rem;
 }
 
@@ -240,12 +240,12 @@ const gearItems: { icon: string; key: LangKey }[] = [
 }
 
 .day-label {
-  font-size: 0.9rem;
+  font-size: 1.5rem;
   margin-bottom: 0.3rem;
 }
 
 .day-time {
-  font-size: 0.85rem;
+  font-size: 1.2rem;
 }
 
 .gear-icons {

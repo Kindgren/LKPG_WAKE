@@ -109,9 +109,9 @@ const navigateTo = (path: string) => {
 }
 
 .close-button {
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   color: var(--p-primary-color);
   cursor: pointer;
-  padding-top: 35px;
+  padding-top: 45px;
 }
 </style>
