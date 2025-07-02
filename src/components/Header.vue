@@ -7,6 +7,14 @@ import MenuItem from "../menu/MenuItem.vue";
 import Logo from "../assets/circleLogo.png";
 import { useTranslation } from "../menu/useTranslation";
 import { Toolbar } from "primevue";
+const isHeaderCollapsed = ref(false);
+
+const toggleHeader = () => {
+  // Only allow toggle on mobile
+  if (isMobile.value) {
+    isHeaderCollapsed.value = !isHeaderCollapsed.value;
+  }
+};
 
 const { t } = useTranslation();
 const isMobile = useMediaQuery("(max-width: 808px)");
@@ -44,9 +52,21 @@ const currentLang = computed<"sv" | "en">(() => {
 </script>
 
 <template>
-  <Toolbar class="app-header">
+  <Toolbar
+    :class="['app-header', { collapsed: isHeaderCollapsed && isMobile }]"
+  >
     <template #start>
       <img :src="Logo" alt="Logo" class="logo" @click="navigateTo('/home')" />
+      <button
+        v-if="isMobile"
+        :class="['collapse-btn', { collapsed: isHeaderCollapsed }]"
+        @click="toggleHeader"
+        aria-label="Toggle Header"
+      >
+        <i
+          :class="isHeaderCollapsed ? 'pi pi-chevron-down' : 'pi pi-chevron-up'"
+        />
+      </button>
     </template>
 
     <template #center>
@@ -107,6 +127,30 @@ const currentLang = computed<"sv" | "en">(() => {
 </template>
 
 <style scoped>
+.app-header {
+  height: 160px;
+  transition: height 0.3s ease;
+  overflow: hidden;
+}
+
+.app-header.collapsed {
+  height: 0px;
+}
+
+.collapse-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-color);
+  position: absolute;
+  top: 135px;
+  left: 50%;
+}
+.collapse-btn.collapsed {
+  top: 0;
+  color: black;
+}
 .hover-target {
   cursor: pointer;
   background-color: var(--p-surface-700);
