@@ -1,39 +1,36 @@
 <script setup>
+import { useDeviceStore } from "../stores/useDeviceStore";
 
+const deviceStore = useDeviceStore();
+const isMobile = deviceStore.isMobile;
 const openInNewWindow = () => {
-  window.open('https://app.wakeque.com/lkpg-wake-park', '_blank', 'noopener')
-}
+  window.open("https://app.wakeque.com/lkpg-wake-park", "_blank", "noopener");
+};
 </script>
 
 <template>
+  <div class="iframe-wrapper">
+    <iframe
+      src="https://app.wakeque.com/lkpg-wake-park"
+      width="100%"
+      height="100%"
+      frameborder="0"
+      style="border: none"
+      title="Boka LKPG Wake Park"
+    ></iframe>
+  </div>
 
-
-    <div class="iframe-wrapper">
-      <iframe
-        src="https://app.wakeque.com/lkpg-wake-park"
-        width="100%"
-        height="100%"
-        frameborder="0"
-        style="border: none;"
-        title="Boka LKPG Wake Park"
-      ></iframe>
-    </div>
-
-      <div class = "button-container">
-       <Button
+  <div class="button-container" v-if="isMobile">
+    <Button
       label="Öppna shoppen i nytt fönster"
       icon="pi pi-external-link"
       class="p-button-success mb-3"
       @click="openInNewWindow"
     />
-    </div>
+  </div>
 </template>
 
-
-
-
 <style scoped>
-
 .button-container {
   margin: 0 auto;
   padding: 10px;
@@ -68,9 +65,6 @@ const openInNewWindow = () => {
   overflow: hidden; /* hides overflow outside container */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 
-   height: 77vh; /* 70% of viewport height */
+  height: 85vh; /* 70% of viewport height */
 }
-
-
-
 </style>

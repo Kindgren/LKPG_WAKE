@@ -1,1 +1,30 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom reset for body */
+/* @media (min-width: 768px) {
+  body {
+    margin: -2px;
+  }
+} */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  font-family: var(--font-main);
+  color: var(--color-dark);
+  margin: -2px;
+}
+
+:root {
+  --font-main: "Inter", sans-serif;
+  --color-primary: #0a3d62;
+  --color-secondary: #3c6382;
+  --color-accent: #82ccdd;
+  --color-dark: #2f3640;
+  --color-light: #f5f6fa;
+}

@@ -1,47 +1,82 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import AppHeader from './components/Header.vue'
-import AppDrawer from './components/SideMenu.vue'
-import { useRoute } from 'vue-router'
+import { ref } from "vue";
+import AppHeader from "./components/Header.vue";
+import AppDrawer from "./components/OverlayMenu.vue";
+import { useRoute } from "vue-router";
 
-const drawerVisible = ref(false)
-const isMobile = ref(true)
-const route = useRoute()
-
-onMounted(() => {
-  isMobile.value = /Android|webOS|iPhone|iPad|iPod|BlackBerry|Windows Phone/i.test(navigator.userAgent)
-  // isMobile.value = true;
-})
-
+const drawerVisible = ref(false);
+const route = useRoute();
 </script>
 
 <template>
-  <div v-if="!isMobile" class="under-construction">
-    <h1>🚧 Site Under Construction</h1>
-    <p>This site is only available on mobile devices at the moment.</p>
-  </div>
-
-  <div v-else>
-    <AppHeader @toggle-drawer="drawerVisible = true" />
+  <div class="app-layout">
+    <AppHeader
+      @toggle-drawer="drawerVisible = true"
+      :drawer-open="drawerVisible"
+    />
     <AppDrawer v-model:visible="drawerVisible" />
+
     <main class="main-content">
       <router-view />
     </main>
+
+    <footer
+      v-if="route.path !== '/booking' && route.path !== '/queue'"
+      class="site-footer"
+    >
+      <p>
+        2025 - Website powered by
+        <a
+          href="https://www.linkedin.com/in/gustav-kindgren"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="linkedin-link"
+        >
+          @Gustav Kindgren
+        </a>
+      </p>
+    </footer>
   </div>
-    <footer v-if="route.path !== '/booking' && route.path!=='/queue'" class="site-footer">
-  <p >© 2025 Gustav Kindgren.</p>
-</footer>
 </template>
 
-
 <style>
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+}
+
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #e0f7fa, #ffffff);
+  margin: -2px;
+  color: black;
+}
+
 .main-content {
-  padding-top: 10px;
-  
+  flex: 1;
 }
 
-:root {
-  color-scheme: light !important;
+.site-footer {
+  padding: 1rem;
+  background: var(--p-primary-900);
+  text-align: center;
+  color: white;
+  font-size: 1.1rem;
 }
 
+.linkedin-link {
+  color: var(--p-primary-300);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.linkedin-link:hover {
+  color: var(--p-primary-200);
+  text-decoration: underline;
+}
 </style>
