@@ -59,7 +59,7 @@ const currentLang = computed<"sv" | "en">(() => {
     :class="['app-header', { collapsed: isHeaderCollapsed && isMobile }]"
   >
     <template #start>
-      <div class="header-actions" v-if="isMobile">
+      <div class="header-actions" v-if="isMobile && !isHeaderCollapsed">
         <div
           class="settings-wrapper"
           @mouseenter="openSettings = true"
