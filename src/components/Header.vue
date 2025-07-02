@@ -193,9 +193,9 @@ const currentLang = computed<"sv" | "en">(() => {
 .collapse-btn {
   background: none;
   border: none;
+  color: black;
   font-size: 1.5rem;
   cursor: pointer;
-  color: var(--text-color);
   position: absolute;
   top: 115px;
   left: calc(51% + 5px);

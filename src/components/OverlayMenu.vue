@@ -112,6 +112,6 @@ const navigateTo = (path: string) => {
   font-size: 1.5rem;
   color: var(--p-primary-color);
   cursor: pointer;
-  padding-top: 45px;
+  padding-top: 22px;
 }
 </style>
