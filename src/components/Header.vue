@@ -112,7 +112,7 @@ const currentLang = computed<"sv" | "en">(() => {
 
     <template #center>
       <img
-        v-if="isMobile"
+        v-if="isMobile && !isHeaderCollapsed"
         :src="Logo"
         alt="Logo"
         class="logo"
@@ -165,7 +165,7 @@ const currentLang = computed<"sv" | "en">(() => {
       </div>
       <div class="header-actions" v-else></div>
       <i
-        v-if="isMobile"
+        v-if="isMobile && !isHeaderCollapsed"
         :class="[
           'pi',
           props.drawerOpen ? 'pi-times' : 'pi-bars',

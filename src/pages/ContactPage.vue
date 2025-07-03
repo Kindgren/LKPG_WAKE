@@ -115,7 +115,7 @@ const languageStore = useLanguageStore();
 .contact-page {
   max-width: 480px;
   margin: 3rem auto;
-  margin-top: 1rem;
+  margin-top: 25px;
   padding: 1rem 1.2rem;
   font-family: "Inter", sans-serif;
   color: #1a3e2a;

@@ -13,7 +13,7 @@
 
 <style scoped>
 .iframe-wrapper {
-  margin-top: 10px;
+  margin-top: 25px;
   border: 2px solid #e5e7eb;
   border-radius: 12px;
   overflow: auto;

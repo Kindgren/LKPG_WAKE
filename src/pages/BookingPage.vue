@@ -59,7 +59,7 @@ const openInNewWindow = () => {
 }
 
 .iframe-wrapper {
-  margin-top: 10px;
+  margin-top: 22px;
   border: 2px solid #e5e7eb;
   border-radius: 12px;
   overflow: hidden; /* hides overflow outside container */
