@@ -28,3 +28,7 @@ body {
   --color-dark: #2f3640;
   --color-light: #f5f6fa;
 }
+
+html {
+  font-size: 16px; /* or adjust as needed */
+}

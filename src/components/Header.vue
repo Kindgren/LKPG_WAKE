@@ -7,6 +7,7 @@ import MenuItem from "../menu/MenuItem.vue";
 import Logo from "../assets/circleLogo.png";
 import { useTranslation } from "../menu/useTranslation";
 import { Toolbar } from "primevue";
+import { useRoute, useRouter } from "vue-router";
 const isHeaderCollapsed = ref(false);
 
 const toggleHeader = () => {
@@ -15,6 +16,9 @@ const toggleHeader = () => {
     isHeaderCollapsed.value = !isHeaderCollapsed.value;
   }
 };
+
+const router = useRouter();
+const route = useRoute();
 
 const { t } = useTranslation();
 const isMobile = useMediaQuery("(max-width: 808px)");
@@ -39,13 +43,19 @@ const currentLangDisplay = computed(() => {
 });
 
 const setLanguage = (lang: "sv" | "en") => {
-  toggleLangSettings();
+  // Update the store
   languageStore.setLanguage(lang);
-  openSettings.value = false; // Close after selection
+
+  // Reconstruct the new path with the selected language
+  const currentPathWithoutLang = route.fullPath.replace(/^\/(sv|en)/, "");
+  router.push(`/${lang}${currentPathWithoutLang}`);
+
+  openSettings.value = false;
 };
 
 const navigateTo = (path: string) => {
-  window.location.href = path;
+  const lang = languageStore.language; // Get current language from store
+  router.push(`/${lang}${path}`);
 };
 
 // Computed current language from store with fallback

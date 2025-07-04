@@ -1,21 +1,11 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import AppHeader from "./components/Header.vue";
-import AppDrawer from "./components/OverlayMenu.vue";
 import { useRoute } from "vue-router";
 
-const drawerVisible = ref(false);
 const route = useRoute();
 </script>
 
 <template>
   <div class="app-layout">
-    <AppHeader
-      @toggle-drawer="drawerVisible = true"
-      :drawer-open="drawerVisible"
-    />
-    <AppDrawer v-model:visible="drawerVisible" />
-
     <main class="main-content">
       <router-view />
     </main>

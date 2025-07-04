@@ -2,9 +2,10 @@
 import { useLanguageStore } from "../stores/languageStore";
 import flipPicture from "../assets/flip.png";
 import { computed } from "vue";
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 
 const router = useRouter();
+const route = useRoute();
 
 const languageStore = useLanguageStore();
 const openFacebookGroup = () => {
@@ -84,7 +85,8 @@ function t(key: LangKey): string {
 }
 
 function goToWakeque(): void {
-  router.push("/booking");
+  const lang = route.params.lang || "sv"; // fallback if not present
+  router.push(`/${lang}/booking`);
 }
 
 const gearItems: { icon: string; key: LangKey }[] = [
