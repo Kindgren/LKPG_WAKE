@@ -74,7 +74,7 @@ const navigateTo = (path: string) => {
 }
 
 .pi {
-  font-size: 2.5rem;
+  font-size: 2rem;
 }
 
 .menu-links {
@@ -84,12 +84,12 @@ const navigateTo = (path: string) => {
 }
 
 .menu-links li {
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin: 2rem 0;
   cursor: pointer;
   transition: color 0.3s ease;
   display: flex;
-  gap: 1rem;
+  gap: 0.8rem;
   color: var(--text-color);
 }
 
@@ -105,12 +105,5 @@ const navigateTo = (path: string) => {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
-}
-
-.close-button {
-  font-size: 1.5rem;
-  color: var(--p-primary-color);
-  cursor: pointer;
-  padding-top: 22px;
 }
 </style>

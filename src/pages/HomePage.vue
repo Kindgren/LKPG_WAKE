@@ -19,23 +19,25 @@ const openFacebookGroup = () => {
 const days = computed(() => {
   if (languageStore.language === "sv") {
     return [
-      // { name: "Mån", time: "", isOpen: false },
-      // { name: "Tis", time: "", isOpen: false },
-      // { name: "Ons", time: "", isOpen: false },
-      { name: "Torsdagar", time: "17 – 20", isOpen: true },
-      // { name: "Fre", time: "", isOpen: false },
-      // { name: "Lör", time: "", isOpen: false },
-      { name: "Söndagar", time: "12 – 18", isOpen: true },
+      { name: "", time: "", isOpen: false },
+      { name: "Mån", time: "", isOpen: false },
+      { name: "Tis", time: "", isOpen: false },
+      { name: "Ons", time: "", isOpen: false },
+      { name: "Tor", time: "17 – 20", isOpen: true },
+      { name: "Fre", time: "", isOpen: false },
+      { name: "Lör", time: "", isOpen: false },
+      { name: "Sön", time: "12 – 18", isOpen: true },
     ];
   } else {
     return [
-      //  { name: "Mon", time: "", isOpen: false },
-      //{ name: "Tue", time: "", isOpen: false },
-      // { name: "Wed", time: "", isOpen: false },
-      { name: "Thursdays", time: "5 PM – 8 PM", isOpen: true },
-      // { name: "Fri", time: "", isOpen: false },
-      // { name: "Sat", time: "", isOpen: false },
-      { name: "Sundays", time: "12 PM – 6 PM", isOpen: true },
+      { name: "", time: "", isOpen: false },
+      { name: "Mon", time: "", isOpen: false },
+      { name: "Tue", time: "", isOpen: false },
+      { name: "Wed", time: "", isOpen: false },
+      { name: "Thur", time: "5 PM – 8 PM", isOpen: true },
+      { name: "Fri", time: "", isOpen: false },
+      { name: "Sat", time: "", isOpen: false },
+      { name: "Sun", time: "12 PM – 6 PM", isOpen: true },
     ];
   }
 });
@@ -208,16 +210,9 @@ const gearItems: { icon: string; key: LangKey }[] = [
   text-align: center;
 }
 
-.opening-title {
-  font-size: 1.5rem;
-  margin-top: 0px;
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-
 .calendar-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 0.5rem;
 }
 
@@ -227,7 +222,6 @@ const gearItems: { icon: string; key: LangKey }[] = [
   border-radius: 0.75rem;
   background: #f4f4f4;
   color: #aaa;
-  font-size: 0.9rem;
   height: 80px;
   display: flex;
   flex-direction: column;
@@ -242,12 +236,12 @@ const gearItems: { icon: string; key: LangKey }[] = [
 }
 
 .day-label {
-  font-size: 1.5rem;
+  font-size: 1rem;
   margin-bottom: 0.3rem;
 }
 
 .day-time {
-  font-size: 1.2rem;
+  font-size: 0.8rem;
 }
 
 .gear-icons {
@@ -264,7 +258,7 @@ const gearItems: { icon: string; key: LangKey }[] = [
 }
 
 .how-title {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 900;
   color: var(--p-primary-800);
   margin-bottom: 0.5rem;
@@ -276,11 +270,11 @@ const gearItems: { icon: string; key: LangKey }[] = [
   padding-left: 1.5em;
   margin-bottom: 2rem;
   color: #333;
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 .description-text {
-  font-size: 1.5rem;
+  font-size: 0.8rem;
   line-height: 1.8;
   margin-bottom: 1rem;
 }
@@ -346,7 +340,7 @@ i {
 }
 
 .opening-title {
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin: 1rem;
   color: var(--p-primary-800);
 }

@@ -45,19 +45,6 @@ const openInNewWindow = () => {
   border-radius: 4px;
 }
 
-.booking-title {
-  font-size: 2.25rem;
-  font-weight: 800;
-  margin-bottom: 0.5rem;
-  color: #111827;
-}
-
-.booking-description {
-  font-size: 1.125rem;
-  margin-bottom: 2rem;
-  color: #4b5563;
-}
-
 .iframe-wrapper {
   margin-top: 22px;
   border: 2px solid #e5e7eb;

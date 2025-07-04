@@ -204,10 +204,10 @@ const currentLang = computed<"sv" | "en">(() => {
   background: none;
   border: none;
   color: black;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   cursor: pointer;
   position: absolute;
-  top: 90px;
+  top: 85px;
   left: calc(51% + 5px);
 }
 .collapse-btn.collapsed {
@@ -219,9 +219,10 @@ const currentLang = computed<"sv" | "en">(() => {
   background-color: var(--p-surface-700);
   border-radius: 4px;
   padding: 5px;
-  margin-left: 10px;
+  margin-left: 25px;
   margin-right: clamp(2px, 3vw, 300px);
   display: inline-block;
+  font-size: 0.6rem;
 }
 
 .lang-label {
@@ -230,6 +231,7 @@ const currentLang = computed<"sv" | "en">(() => {
   gap: 4px;
   z-index: 20000;
   overflow: visible;
+  font-size: 0.7rem;
 }
 
 .arrow-icon {
@@ -280,16 +282,17 @@ const currentLang = computed<"sv" | "en">(() => {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   border-radius: 6px;
   z-index: 10;
-  width: 130px;
+  width: 80px;
   margin-top: 0px;
+  margin-left: 20px;
 }
 
 .lang-button {
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 1rem;
-  padding: 4px;
+  font-size: 0.7rem;
+  padding: 3px;
   text-align: left;
   color: white;
   width: 100%;
@@ -319,7 +322,7 @@ const currentLang = computed<"sv" | "en">(() => {
 
 .menu-list li {
   cursor: pointer;
-  font-size: 1.4rem;
+  font-size: 1rem;
   font-weight: bold;
   transition: color 0.3s ease;
   color: var(--text-color);

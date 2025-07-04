@@ -55,7 +55,7 @@ body,
   background: var(--p-primary-900);
   text-align: center;
   color: white;
-  font-size: 1.1rem;
+  font-size: 0.8rem;
 }
 
 .linkedin-link {

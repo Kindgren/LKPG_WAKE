@@ -58,14 +58,13 @@ const languageStore = useLanguageStore();
 }
 
 .title {
-  font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 700;
   text-align: center;
   color: #2d6a4f;
   margin-bottom: 2rem;
   position: relative;
   font-weight: 700;
-  font-size: 2.1rem;
+  font-size: 2rem;
   margin-bottom: 0.8rem;
   color: #2c5234;
 }
@@ -84,7 +83,7 @@ const languageStore = useLanguageStore();
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  font-size: 1.125rem;
+  font-size: 1rem;
   line-height: 1.8;
   color: #343a40;
 }
@@ -99,7 +98,7 @@ const languageStore = useLanguageStore();
   }
 
   .content {
-    font-size: 1.05rem;
+    font-size: 1rem;
   }
 }
 </style>

@@ -125,15 +125,8 @@ const languageStore = useLanguageStore();
   text-align: center;
 }
 
-h1 {
-  font-weight: 700;
-  font-size: 2.1rem;
-  margin-bottom: 0.8rem;
-  color: #2c5234;
-}
-
 .intro-text {
-  font-size: 1.1rem;
+  font-size: 1rem;
   margin-bottom: 2.2rem;
   color: #3a5a35;
 }
@@ -146,7 +139,7 @@ h1 {
   margin-bottom: 2rem;
   position: relative;
   font-weight: 700;
-  font-size: 2.1rem;
+  font-size: 2rem;
   margin-bottom: 0.8rem;
   color: #2c5234;
 }
