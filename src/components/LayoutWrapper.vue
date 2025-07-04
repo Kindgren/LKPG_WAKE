@@ -12,7 +12,10 @@ const drawerOpen = ref(false);
       :drawer-open="drawerOpen"
       @toggle-drawer="drawerOpen = !drawerOpen"
     />
-    <AppDrawer :visible="drawerOpen" />
+    <AppDrawer
+      :visible="drawerOpen"
+      @update:visible="drawerOpen = !drawerOpen"
+    />
     <main class="main-content">
       <router-view />
     </main>

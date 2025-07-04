@@ -1,24 +1,26 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { menuItems } from "../menu/menuData"; // Import the menu data
-
+import { useLanguageStore } from "../stores/languageStore";
 import { useTranslation } from "../menu/useTranslation";
-
+import { useRouter } from "vue-router";
 const { t } = useTranslation();
-
+const languageStore = useLanguageStore();
 const props = defineProps<{
   visible: boolean;
 }>();
 
 const emit = defineEmits(["update:visible"]);
-
+const router = useRouter();
 const modelValue = computed({
   get: () => props.visible,
   set: (value: boolean) => emit("update:visible", value),
 });
 
 const navigateTo = (path: string) => {
-  window.location.href = path;
+  emit("update:visible");
+  const lang = languageStore.language; // Get current language from store
+  router.push(`/${lang}${path}`);
 };
 </script>
 
@@ -72,7 +74,7 @@ const navigateTo = (path: string) => {
 }
 
 .pi {
-  font-size: xx-large;
+  font-size: 2.5rem;
 }
 
 .menu-links {

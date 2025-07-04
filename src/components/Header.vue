@@ -207,7 +207,7 @@ const currentLang = computed<"sv" | "en">(() => {
   font-size: 1.5rem;
   cursor: pointer;
   position: absolute;
-  top: 115px;
+  top: 90px;
   left: calc(51% + 5px);
 }
 .collapse-btn.collapsed {
@@ -247,11 +247,11 @@ const currentLang = computed<"sv" | "en">(() => {
   padding: 0;
   margin: 0;
   width: 100%;
-  height: 120px;
+  height: 90px;
 }
 
 .logo {
-  height: 100px;
+  height: 70px;
   margin-left: 5vw;
   cursor: pointer;
 }
