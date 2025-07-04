@@ -30,9 +30,6 @@ const navigateTo = (path: string) => {
       @click.self="modelValue = false"
     >
       <div class="menu-content">
-        <div class="menu-header">
-          <i @click="modelValue = false" class="close-button pi pi-times" />
-        </div>
         <ul class="menu-links">
           <li
             v-for="item in menuItems"

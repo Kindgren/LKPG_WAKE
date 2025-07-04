@@ -263,6 +263,7 @@ const currentLang = computed<"sv" | "en">(() => {
   padding: 1.5rem;
   border-radius: 6px;
   transition: background-color 0.2s ease;
+  z-index: 10000;
 }
 
 .header-actions {
