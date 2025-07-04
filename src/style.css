@@ -1,14 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Custom reset for body */
-/* @media (min-width: 768px) {
-  body {
-    margin: -2px;
-  }
-} */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
 
 body {
   font-family: "Inter", sans-serif;
@@ -30,5 +23,5 @@ body {
 }
 
 html {
-  font-size: 16px; /* or adjust as needed */
+  font-size: 16px !important; /* or adjust as needed */
 }
