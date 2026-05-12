@@ -10,10 +10,7 @@ const route = useRoute();
       <router-view />
     </main>
 
-    <footer
-      v-if="route.path !== '/booking' && route.path !== '/queue'"
-      class="site-footer"
-    >
+    <footer class="site-footer">
       <p>
         2025 - Website powered by
         <a

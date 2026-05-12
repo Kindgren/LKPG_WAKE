@@ -7,15 +7,11 @@ export const translations: Record<
 > = {
   sv: {
     start: "Hem",
-    queue: "Kö",
-    shop: "Boka & Köp Pass",
     about: "Om oss",
     contact: "Kontakt",
   },
   en: {
     start: "Home",
-    queue: "Queue",
-    shop: "Book & Buy Pass",
     about: "About",
     contact: "Contact",
   },

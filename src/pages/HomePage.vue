@@ -50,8 +50,7 @@ type LangKey =
   | "helmet"
   | "lifeVest"
   | "wetsuit"
-  | "wakeboard"
-  | "bookButton";
+  | "wakeboard";
 
 const translations: Record<"sv" | "en", Record<LangKey, string>> = {
   sv: {
@@ -59,36 +58,29 @@ const translations: Record<"sv" | "en", Record<LangKey, string>> = {
     descriptionLine1:
       "Vi har instruktörer på plats som hjälper dig igång. Alla är välkomna, oavsett tidigare erfarenhet",
     descriptionLine2:
-      "Förboka gärna din plats via Wakeque för att vara säker på att få åka. Dyk upp minst 15 minuter innan din bokade tid",
+      "Dyk upp minst 15 minuter innan du vill börja åka",
     descriptionLine3: "All nödvändig utrustning finns att låna.",
     helmet: "Hjälm",
     lifeVest: "Flytväst",
     wetsuit: "Våtdräkt",
     wakeboard: "Wakeboard",
-    bookButton: "Boka via Wakeque",
   },
   en: {
     howItWorks: "How It Works",
     descriptionLine1:
       "We have instructors on site to help you get started. Everyone is welcome, regardless of prior experience.",
     descriptionLine2:
-      "We recommend booking via Wakeque to ensure your spot. Show up at least 15 minutes before your schedueled time",
+      "Show up at least 15 minutes before you want to start riding",
     descriptionLine3: "All necessary equipment is available to borrow.",
     helmet: "Helmet",
     lifeVest: "Life Vest",
     wetsuit: "Wet suit",
     wakeboard: "Wakeboard",
-    bookButton: "Book via Wakeque",
   },
 };
 
 function t(key: LangKey): string {
   return translations[languageStore.language as "sv" | "en"][key];
-}
-
-function goToWakeque(): void {
-  const lang = route.params.lang || "sv"; // fallback if not present
-  router.push(`/${lang}/booking`);
 }
 
 const gearItems: { icon: string; key: LangKey }[] = [
@@ -175,13 +167,6 @@ const gearItems: { icon: string; key: LangKey }[] = [
             <span>{{ t(item.key) }}</span>
           </div>
         </div>
-
-        <!-- Booking Button -->
-        <Button
-          icon="pi pi-external-link"
-          :label="t('bookButton')"
-          @click="goToWakeque"
-        />
       </div>
     </div>
   </section>
