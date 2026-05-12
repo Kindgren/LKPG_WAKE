@@ -2,10 +2,6 @@
 import { useLanguageStore } from "../stores/languageStore";
 import flipPicture from "../assets/flip.png";
 import { computed } from "vue";
-import { useRouter, useRoute } from "vue-router";
-
-const router = useRouter();
-const route = useRoute();
 
 const languageStore = useLanguageStore();
 const openFacebookGroup = () => {
