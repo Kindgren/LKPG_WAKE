@@ -9,7 +9,7 @@
 
     <footer class="site-footer">
       <p>
-        2025 - Website powered by
+        2026 - Website powered by
         <a
           href="https://www.linkedin.com/in/gustav-kindgren"
           target="_blank"

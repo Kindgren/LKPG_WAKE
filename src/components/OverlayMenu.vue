@@ -18,9 +18,13 @@ const modelValue = computed({
 });
 
 const navigateTo = (path: string) => {
-  emit("update:visible");
-  const lang = languageStore.language; // Get current language from store
-  router.push(`/${lang}${path}`);
+  emit("update:visible", false);
+  if (path.startsWith("http")) {
+    window.open(path, "_blank", "noopener");
+    return;
+  }
+  const lang = languageStore.language || "sv";
+  router.push(`/${lang}/${path.replace(/^\//, "")}`);
 };
 </script>
 

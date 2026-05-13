@@ -8,15 +8,6 @@ import Logo from "../assets/circleLogo.png";
 import { useTranslation } from "../menu/useTranslation";
 import { Toolbar } from "primevue";
 import { useRoute, useRouter } from "vue-router";
-const isHeaderCollapsed = ref(false);
-
-const toggleHeader = () => {
-  // Only allow toggle on mobile
-  if (isMobile.value) {
-    isHeaderCollapsed.value = !isHeaderCollapsed.value;
-  }
-};
-
 const router = useRouter();
 const route = useRoute();
 
@@ -24,13 +15,10 @@ const { t } = useTranslation();
 const isMobile = useMediaQuery("(max-width: 808px)");
 
 const openSettings = ref(false);
+
 const languageStore = useLanguageStore();
 
 const emit = defineEmits(["toggle-drawer"]);
-
-const toggleLangSettings = () => {
-  openSettings.value = !openSettings;
-};
 
 const props = defineProps<{
   drawerOpen: boolean;
@@ -54,8 +42,12 @@ const setLanguage = (lang: "sv" | "en") => {
 };
 
 const navigateTo = (path: string) => {
-  const lang = languageStore.language; // Get current language from store
-  router.push(`/${lang}${path}`);
+  if (path.startsWith("http")) {
+    window.open(path, "_blank", "noopener");
+    return;
+  }
+  const lang = languageStore.language || "sv";
+  router.push(`/${lang}/${path.replace(/^\//, "")}`);
 };
 
 // Computed current language from store with fallback
@@ -66,16 +58,14 @@ const currentLang = computed<"sv" | "en">(() => {
 
 <template>
   <Toolbar
-    :class="['app-header', { collapsed: isHeaderCollapsed && isMobile }]"
+    class="app-header"
   >
     <template #start>
-      <div class="header-actions" v-if="isMobile && !isHeaderCollapsed">
+      <div class="header-actions" v-if="isMobile">
         <div
           class="settings-wrapper"
-          @mouseenter="openSettings = true"
-          @mouseleave="openSettings = false"
         >
-          <div class="hover-target" @click="toggleLangSettings">
+          <div class="hover-target" @click="openSettings = !openSettings">
             <span>
               {{ currentLangDisplay.flag }} {{ currentLangDisplay.label }}
               <i
@@ -88,7 +78,6 @@ const currentLang = computed<"sv" | "en">(() => {
           <div
             class="settings-menu"
             v-if="openSettings"
-            @mouseleave="toggleLangSettings"
           >
             <button class="lang-button" @click="setLanguage('sv')">
               🇸🇪 Svenska
@@ -107,22 +96,11 @@ const currentLang = computed<"sv" | "en">(() => {
         class="logo"
         @click="navigateTo('/home')"
       />
-
-      <button
-        v-if="isMobile"
-        :class="['collapse-btn', { collapsed: isHeaderCollapsed }]"
-        @click="toggleHeader"
-        aria-label="Toggle Header"
-      >
-        <i
-          :class="isHeaderCollapsed ? 'pi pi-chevron-down' : 'pi pi-chevron-up'"
-        />
-      </button>
     </template>
 
     <template #center>
       <img
-        v-if="isMobile && !isHeaderCollapsed"
+        v-if="isMobile"
         :src="Logo"
         alt="Logo"
         class="logo"
@@ -131,13 +109,13 @@ const currentLang = computed<"sv" | "en">(() => {
 
       <nav v-if="!isMobile" class="desktop-menu">
         <ul class="menu-list">
-          <!-- Loop through the menu items -->
-          <MenuItem
+          <li
             v-for="item in menuItems"
             :key="item.key"
-            :label="t(item.key)"
-            :path="item.path"
-          />
+            @click="navigateTo(item.path)"
+          >
+            {{ t(item.key) }}
+          </li>
         </ul>
       </nav>
     </template>
@@ -146,10 +124,8 @@ const currentLang = computed<"sv" | "en">(() => {
       <div class="header-actions" v-if="!isMobile">
         <div
           class="settings-wrapper"
-          @mouseenter="openSettings = true"
-          @mouseleave="openSettings = false"
         >
-          <div class="hover-target" @click="toggleLangSettings">
+          <div class="hover-target" @click="openSettings = !openSettings">
             <span>
               {{ currentLangDisplay.flag }} {{ currentLangDisplay.label }}
               <i
@@ -162,7 +138,6 @@ const currentLang = computed<"sv" | "en">(() => {
           <div
             class="settings-menu"
             v-if="openSettings"
-            @mouseleave="toggleLangSettings"
           >
             <button class="lang-button" @click="setLanguage('sv')">
               🇸🇪 Svenska
@@ -175,7 +150,7 @@ const currentLang = computed<"sv" | "en">(() => {
       </div>
       <div class="header-actions" v-else></div>
       <i
-        v-if="isMobile && !isHeaderCollapsed"
+        v-if="isMobile"
         :class="[
           'pi',
           props.drawerOpen ? 'pi-times' : 'pi-bars',
@@ -191,70 +166,18 @@ const currentLang = computed<"sv" | "en">(() => {
 
 <style scoped>
 .app-header {
-  height: 160px;
-  transition: height 0.3s ease;
-  overflow: visible;
-}
-
-.app-header.collapsed {
-  height: 0px;
-}
-
-.collapse-btn {
-  background: none;
-  border: none;
-  color: black;
-  font-size: 1.2rem;
-  cursor: pointer;
-  position: absolute;
-  top: 85px;
-  left: calc(51% + 5px);
-}
-.collapse-btn.collapsed {
   top: 0;
-  color: black;
-}
-.hover-target {
-  cursor: pointer;
-  background-color: var(--p-surface-700);
-  border-radius: 4px;
-  padding: 5px;
-  margin-left: 25px;
-  margin-right: clamp(2px, 3vw, 300px);
-  display: inline-block;
-  font-size: 0.6rem;
-}
-
-.lang-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  z-index: 20000;
-  overflow: visible;
-  font-size: 0.7rem;
-}
-
-.arrow-icon {
-  transition: transform 0.2s ease;
-  font-size: 0.7rem;
-}
-
-/* Rotate the arrow on hover of the wrapper */
-.arrow-icon.rotated {
-  transform: rotate(180deg);
-}
-
-.app-header {
-  top: 0;
-  padding: 0;
+  padding: 0 4vw !important; /* Increased horizontal padding */
   margin: 0;
   width: 100%;
   height: 90px;
+  background-color: #051c2c !important;
+  border: none !important;
+  color: white;
 }
 
 .logo {
-  height: 70px;
-  margin-left: 5vw;
+  height: 60px;
   cursor: pointer;
 }
 
@@ -322,13 +245,38 @@ const currentLang = computed<"sv" | "en">(() => {
 
 .menu-list li {
   cursor: pointer;
-  font-size: 1rem;
-  font-weight: bold;
-  transition: color 0.3s ease;
-  color: var(--text-color);
+  font-size: 1.1rem;
+  font-weight: 800;
+  transition: all 0.3s ease;
+  color: #f8fafc;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .menu-list li:hover {
-  color: var(--p-primary-color);
+  color: #82ccdd;
+  transform: translateY(-2px);
+}
+
+.hover-target {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  padding: 6px 12px;
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.arrow-icon {
+  transition: transform 0.2s ease;
+  margin-left: 0.5rem;
+}
+
+.arrow-icon.rotated {
+  transform: rotate(180deg);
 }
 </style>

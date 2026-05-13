@@ -15,6 +15,10 @@ const router = useRouter();
 const route = useRoute();
 
 const navigateTo = (path: string) => {
+  if (path.startsWith("http")) {
+    window.open(path, "_blank", "noopener");
+    return;
+  }
   const lang = route.params.lang || "sv";
   router.push(`/${lang}/${path.replace(/^\//, "")}`);
 };

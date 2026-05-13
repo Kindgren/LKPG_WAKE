@@ -39,3 +39,5 @@ router.beforeEach((to, _from, next) => {
     next("/sv/home"); // default fallback
   }
 });
+
+
