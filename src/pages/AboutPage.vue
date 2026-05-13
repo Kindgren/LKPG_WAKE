@@ -103,5 +103,8 @@ const languageStore = useLanguageStore();
   .title {
     font-size: 2rem;
   }
+  .about-page{
+  margin-top: 130px;
+  }
 }
 </style>

@@ -265,5 +265,8 @@ const languageStore = useLanguageStore();
     width: 100%;
     justify-content: center;
   }
+  .contact-page {
+  margin-top: 130px;
+  }
 }
 </style>
