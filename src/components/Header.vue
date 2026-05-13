@@ -3,7 +3,6 @@ import { computed, ref } from "vue";
 import { useLanguageStore } from "../stores/languageStore";
 import { useMediaQuery } from "@vueuse/core";
 import { menuItems } from "../menu/menuData"; // Import the menu data
-import MenuItem from "../menu/MenuItem.vue";
 import Logo from "../assets/circleLogo.png";
 import { useTranslation } from "../menu/useTranslation";
 import { Toolbar } from "primevue";
