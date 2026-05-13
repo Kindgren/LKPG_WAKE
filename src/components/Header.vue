@@ -3,7 +3,7 @@ import { computed, ref } from "vue";
 import { useLanguageStore } from "../stores/languageStore";
 import { useMediaQuery } from "@vueuse/core";
 import { menuItems } from "../menu/menuData"; // Import the menu data
-import Logo from "../assets/circleLogo.png";
+import Logo from "../assets/2026Logo.png";
 import { useTranslation } from "../menu/useTranslation";
 import { Toolbar } from "primevue";
 import { useRoute, useRouter } from "vue-router";
@@ -177,7 +177,7 @@ const currentLang = computed<"sv" | "en">(() => {
 }
 
 .logo {
-  height: 130px; /* Your desired big size */
+  height: 220px; /* Your desired big size */
   width: auto;
   margin-top: 5px;
   /* CRITICAL: Align to the top ofthe flex container */
@@ -185,7 +185,7 @@ const currentLang = computed<"sv" | "en">(() => {
   
   /* MAGIC: This tells the toolbar to treat the logo as if it is only 90px tall.
      (180px actual height - 90px header height = 90px negative margin) */
-  margin-bottom: -90px; 
+  margin-bottom: -140px; 
   
   z-index: 100;
   cursor: pointer;
