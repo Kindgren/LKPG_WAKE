@@ -55,8 +55,9 @@ const navigateTo = (path: string) => {
 .overlay-menu {
   position: fixed;
   inset: 0;
-  background-color: #000;
-  opacity: 80%;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   color: white;
   display: flex;
   flex-direction: column;

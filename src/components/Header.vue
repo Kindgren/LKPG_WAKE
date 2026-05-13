@@ -166,18 +166,34 @@ const currentLang = computed<"sv" | "en">(() => {
 <style scoped>
 .app-header {
   top: 0;
-  padding: 0 4vw !important; /* Increased horizontal padding */
+  padding: 0 4vw !important;
   margin: 0;
   width: 100%;
   height: 90px;
   background-color: #051c2c !important;
   border: none !important;
   color: white;
+  overflow: visible !important; 
 }
 
 .logo {
-  height: 60px;
+  height: 130px; /* Your desired big size */
+  width: auto;
+  margin-top: 5px;
+  /* CRITICAL: Align to the top ofthe flex container */
+  align-self: flex-start; 
+  
+  /* MAGIC: This tells the toolbar to treat the logo as if it is only 90px tall.
+     (180px actual height - 90px header height = 90px negative margin) */
+  margin-bottom: -90px; 
+  
+  z-index: 100;
   cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.logo:hover {
+  transform: scale(1.02);
 }
 
 .drawer-icon {
@@ -278,4 +294,57 @@ const currentLang = computed<"sv" | "en">(() => {
 .arrow-icon.rotated {
   transform: rotate(180deg);
 }
+
+.hover-target {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  padding: 6px 12px; /* Originalstorlek */
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.8rem; /* Originalstorlek */
+  font-weight: bold;
+}
+
+/* Fixa menyn så den ligger kant-i-kant med knappen */
+.settings-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.settings-menu {
+  position: absolute;
+  top: calc(100% + 5px); /* Hamnar 5px under knappen */
+  left: -20px; 
+  background-color: #1e293b; /* En solid färg så den syns mot bakgrunden */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+  z-index: 1000;
+  width: 120px; /* Bredare så texten får plats */
+  overflow: hidden;
+}
+
+/* Här gör vi bara alternativen större */
+.lang-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.85rem; /* Större än 0.7rem */
+  padding: 10px 12px; /* Mycket mer klickbar yta */
+  text-align: left;
+  color: white;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.2s ease;
+}
+
+.lang-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #82ccdd;
+}
+
+
 </style>
