@@ -342,6 +342,15 @@ const gearItems: { icon: string; key: LangKey }[] = [
   padding-left: 1rem;
 }
 
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.15rem;
+    letter-spacing: 0.05em;
+    padding-left: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+}
+
 /* Calendar Grid - Modernized */
 .calendar-grid {
   display: flex;
@@ -352,7 +361,7 @@ const gearItems: { icon: string; key: LangKey }[] = [
 
 .calendar-day {
   display: grid;
-  grid-template-columns: 80px 1fr auto;
+  grid-template-columns: 80px 1fr;
   align-items: center;
   padding: 0.75rem 1.25rem;
   border-radius: 0.5rem;
@@ -360,6 +369,13 @@ const gearItems: { icon: string; key: LangKey }[] = [
   color: rgba(255, 255, 255, 0.4);
   transition: all 0.3s ease;
   border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+@media (max-width: 480px) {
+  .calendar-day {
+    grid-template-columns: 50px 1fr;
+    padding: 0.5rem 0.5rem;
+  }
 }
 
 .calendar-day.open {
@@ -390,6 +406,18 @@ const gearItems: { icon: string; key: LangKey }[] = [
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+@media (max-width: 600px) {
+  .fb-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+  
+  .fb-btn {
+    width: 100%;
+  }
+}
+
 .fb-info .description-text {
   margin: 0;
   font-style: italic;
@@ -404,6 +432,13 @@ const gearItems: { icon: string; key: LangKey }[] = [
   color: rgba(255, 255, 255, 0.8);
 }
 
+@media (max-width: 480px) {
+  .description-text {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+}
+
 /* Gear Icons - Technical Spec Style */
 .gear-icons {
   display: grid;
@@ -415,10 +450,30 @@ const gearItems: { icon: string; key: LangKey }[] = [
   border-radius: 1rem;
 }
 
+@media (max-width: 600px) {
+  .gear-icons {
+    padding: 1rem;
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .gear-icons {
+    grid-template-columns: 1fr;
+    padding: 0.5rem;
+  }
+}
+
 .gear-item {
   display: flex;
   align-items: center;
   gap: 1.25rem;
+}
+
+@media (max-width: 480px) {
+  .gear-item {
+    gap: 0.75rem;
+  }
 }
 
 .gear-icon-box {
@@ -430,6 +485,7 @@ const gearItems: { icon: string; key: LangKey }[] = [
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .gear-icon-box i {
@@ -493,6 +549,16 @@ const gearItems: { icon: string; key: LangKey }[] = [
 
   .map-wrapper {
     height: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  .glass-card {
+    padding: 1.25rem 0.5rem;
+  }
+
+  .details-section {
+    width: 96%;
   }
 }
 </style>
