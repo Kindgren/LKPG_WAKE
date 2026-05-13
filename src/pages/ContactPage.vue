@@ -124,8 +124,9 @@ const languageStore = useLanguageStore();
   padding: 3rem;
   color: #f8fafc;
   max-width: 600px;
-  width: 100%;
+  width: 92%; /* Changed from 100% to allow for margins */
   text-align: center;
+  box-sizing: border-box;
 }
 
 .title {

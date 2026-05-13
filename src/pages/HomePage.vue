@@ -321,11 +321,11 @@ const gearItems: { icon: string; key: LangKey }[] = [
 /* Details Section */
 .details-section {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 3rem;
-  width: 95%;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Lowered from 400px */
+  gap: 2rem;
+  width: 92%;
   max-width: 1300px;
-  margin: -5rem auto 0; /* Overlap the hero section slightly */
+  margin: -5rem auto 0;
   position: relative;
   z-index: 10;
 }
@@ -447,7 +447,7 @@ const gearItems: { icon: string; key: LangKey }[] = [
 
 /* Map Section */
 .map-section {
-  width: 95%;
+  width: 92%;
   max-width: 1300px;
   margin: 4rem auto;
 }
@@ -467,22 +467,29 @@ const gearItems: { icon: string; key: LangKey }[] = [
   }
 
   .welcome-card {
-    padding: 1.5rem;
-    width: 95%;
+    padding: 1.5rem 1rem;
+    width: 100%;
   }
 
   .details-section {
     grid-template-columns: 1fr;
-    width: 95%;
+    width: 92%;
+    gap: 1.5rem;
+  }
+
+  .glass-card {
+    padding: 1.5rem; /* Reduced padding on mobile */
+    width: 100%;
   }
 
   .calendar-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr; /* Single column on very small screens for better readability */
   }
 
   .map-section {
-    width: 95%;
+    width: 92%;
   }
+
 
   .map-wrapper {
     height: 350px;

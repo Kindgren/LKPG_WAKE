@@ -65,7 +65,8 @@ const languageStore = useLanguageStore();
   transition: all 0.4s ease;
   color: #f8fafc;
   max-width: 900px;
-  width: 100%;
+  width: 92%; /* Changed from 100% to allow for margins */
+  box-sizing: border-box;
 }
 
 .title {
